@@ -4,20 +4,20 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib
 import os,sys
-
 from common.HTMLTestRunner import HTMLTestRunner
 
+dir = os.getcwd()
 
 def find_case():
     #方法一，找到用例的路径
-    casePath = "D:\MyData\zhouyp35\Downloads\web_auto-master\web_auto-master\case"
+    casePath = dir+"\\case"
     rule = "test*.py"
     discover = unittest.defaultTestLoader.discover(start_dir=casePath,pattern=rule)
     return discover
 
 def run_case(discover):
     #方法二，执行用例
-    reportPath = "D:\\MyData\\zhouyp35\\Downloads\\web_auto-master\\web_auto-master\\report\\"+"result.html"
+    reportPath = dir+"\\report\\"+"result.html"
     fp = open(reportPath,'wb')
     runner = HTMLTestRunner_cn.HTMLTestRunner(stream=fp,
                                               title='报告的title',
